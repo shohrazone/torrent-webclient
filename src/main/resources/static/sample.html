@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script>
+      function abc() {
+        var source = new EventSource("http://localhost:8080/get");
+        source.onmessage = function (event) {
+          console.log(event.data);
+        };
+      }
+    </script>
+  </head>
+  <body onload="abc()">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5">Joke of this moment!</h1>
+          <p class="lead">
+            This site will keep you laughing every 3 seconds using Server sent
+            events!
+          </p>
+          <div class="card text-left mt-5" style="width: 80rem">
+            <div class="card-header" id="qn">Joke Qn</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" id="ans">Joke Ans</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
