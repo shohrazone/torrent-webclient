@@ -10,8 +10,8 @@ import bt.runtime.BtClient;
 import bt.runtime.BtRuntime;
 import bt.torrent.selector.RarestFirstSelector;
 import com.torrent.webclient.entity.TaskEntity;
-import com.torrent.webclient.repository.TaskEntityRepository;
 import com.torrent.webclient.entity.TaskStats;
+import com.torrent.webclient.repository.TaskEntityRepository;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
@@ -50,7 +50,7 @@ class Leecher {
                 .downloadTime(LocalDateTime.now())
                 .build();
 
-        boolean mkdir = new File(downloadFolder).mkdir();
+        new File(downloadFolder).mkdir();
         taskEntityRepository.findById(torrentId)
                 .switchIfEmpty(Mono.defer(() -> taskEntityRepository.save(taskEntity)))
                 .subscribe();
